@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<resource>
+  <item value="数据库实例状态" key="select instance_name,version,status,database_status from v$instance"/>
+  <!--<item value="数据库监听状态" key="lsnrctl status"/>-->
+  <item value="目前Session数量" key="select count(0) from v$session"/>
+  <item value="表空间的状态" key="select tablespace_name,status from dba_tablespaces"/>
+  <item value="表空间使用情况" key="select d.tablespace_name tablespace_name, round((d.sumbytes/1024/1024),2) total_m, round(decode(f.sumbytes,null,0,f.sumbytes)/1024/1024,2) free_m, round(((d.sumbytes-decode(f.sumbytes,null,0,f.sumbytes))/1024/1024),2) used_m, round((d.sumbytes-decode(f.sumbytes,null,0,f.sumbytes))*100/d.sumbytes,2) used_pct from (select tablespace_name, sum(bytes) sumbytes from dba_free_space group by tablespace_name) f, (select tablespace_name, sum(bytes) sumbytes from dba_data_files group by tablespace_name) d where f.tablespace_name(+) = d.tablespace_name union all select d.tablespace_name tablespace_name, round((d.sumbytes/1024/1024),2) total_m, round((d.sumbytes/1024/1024),2)-round(decode(f.sumbytes,null,0,f.sumbytes)/1024/1024,2) free_m, round(decode(f.sumbytes,null,0,f.sumbytes)/1024/1024,2) used_m, round(decode(f.sumbytes,null,0,f.sumbytes)*100/d.sumbytes,2) used_pct from (select tablespace_name, sum(bytes_cached) sumbytes from v$temp_extent_pool group by tablespace_name) f, (select tablespace_name, sum(bytes) sumbytes from dba_temp_files group by tablespace_name) d where f.tablespace_name(+) = d.tablespace_name"/>
+  <!--<item value="临时表空间的使用情况" key="select a.used_temp_m,b.total_temp_m,(a.used_temp_m/b.total_temp_m*100) used_raito from (select sum(size_m) used_temp_m from (SELECT sid,serial#,sql_address,machine,program,tablespace,segtype,contents,blocks*16/1024 size_M FROM v$session se,v$sort_usage su WHERE se.saddr=su.session_addr order by 9 desc )) a , (select sum(bytes)/1024/1024 total_temp_m from dba_temp_files ) b"/>-->
+  <item value="数据文件的状态" key="select status from dba_data_files"/>-->
+  <!--<item value="控制文件状态" key="select * from v$controlfile"/>-->
+  <!--<item value="重做REDO的情况" key="select group#,thread#,sequence#,bytes/1024/1024||&apos;m&apos; bytes_m,members,archived,status,first_change#,first_time from v$log"/>-->
+  <!--<item value="日志切换间隔" key="select thread#,sequence#, to_char(first_time,&apos;yyyymmdd_hh24:mi:ss&apos;), round((first_time-lag(first_time) over(order by first_time))*24*60,2) minutes from v$log_history where first_time &gt; sysdate - 2 order by thread#,first_time"/>-->
+  <item value="回滚段的状态" key="select segment_name,status from dba_rollback_segs"/>
+  <item value="数据文件的状态" key="select name,status from v$datafile"/>
+  <item value="用户对象的状态" key="select owner,object_name,object_type from dba_objects where status!=&apos;VALID&apos; and owner!=&apos;SYS&apos; and owner!=&apos;SYSTEM&apos;"/>
+  <!--<item value="alert日志情况" key="more alert_[instance_name].log"/>-->
+  <!--<item value="oracle 后台跟踪文件" key="vi &lt;最新产生的文件&gt;"/>-->
+  <!--<item value="oracle 内核转储文件" key="vi &lt;最新产生的文件&gt;"/>-->
+  <item value="有无死锁及数量" key="select count(0) from v$lock where block=1"/>
+  <item value="当前处于锁等待会话的数量" key="select count(0) from v$session where lockwait is not null"/>
+  <item value="数据库的僵死进程" key="select pid, spid, username, terminal, program from v$process where addr not in (select paddr from v$session)"/>
+  <item value="数据库当前的等待事件" key="select event,count(0)from v$session_wait group by event"/>
+  <item value="Enqueue等待" key="SELECT eq_type as  locks, total_req# as  gets, total_wait# as waits, cum_wait_time FROM v$enqueue_stat WHERE total_wait# &gt; 0"/>
+  <item value="GCS等待事件的分析" key=" SELECT inst_id, event, p1 FILE_NUMBER, p2 BLOCK_NUMBER, WAIT_TIME FROM gv$session_wait WHERE event in (&apos;buffer busy global cr&apos;, &apos;global cache busy&apos;, &apos;buffer busy global cache&apos;)"/>
+  <item value="SCHEDULER JOB运行状态" key="select owner,job_name,program_name,start_date,enabled,state,run_count,failure_count, next_run_date from dba_scheduler_jobs"/>
+  <item value="长时间运行的Sql" key="SELECT sql_text as SQL, executions as runtimes, buffer_gets / decode(executions, 0, 1, executions) / 4000 as runtime FROM v$sql WHERE buffer_gets / decode(executions, 0,1, executions) / 4000 &gt; 10AND executions &gt; 0 and rownum&lt;30order by buffer_gets / decode(executions, 0, 1, executions) / 4000 DESC"/>
+  <item value="数据库命中率" key="select a.hit as Dict_Ratio, b.buffer_hit as Buffer_Ratio, b.parse_hit as SoftParse, b.mem_sort as MemorySort, c.hit as Library_Ratio from (select trunc((1-sum(getmisses)/(sum(gets)+sum(getmisses)))*100,2) Hit from v$rowcache where gets + getmisses &lt;&gt; 0) a, (select trunc((1- sum(decode(name,&apos;physical reads&apos;,value,0)) /(sum(decode(name,&apos;db block gets&apos;,value,0))+ sum(decode(name,&apos;consistent gets&apos;,value,0))))*100,2) buffer_hit, trunc((1-sum(decode(name,&apos;parse count (hard)&apos;,value,0)) /sum(decode(name,&apos;parse count (total)&apos;,value,0)))*100,2) parse_hit, trunc((1-sum(decode(name,&apos;sorts (disk)&apos;,value,0)) /(sum(decode(name,&apos;sorts (memory)&apos;,value,0))+ sum(decode(name,&apos;sorts (disk)&apos;,value,0))))*100,2) mem_sort from v$sysstat) b, (select trunc(sum(abs(pins))/(sum(abs(pins))+sum(abs(reloads)))*100,2) Hit from v$librarycache) c"/>
+  <item value="shared_pool 保留区使用情况" key="select free_space,USED_SPACE,MAX_USED_SIZE from v$shared_pool_reserved"/>
+  <item value="查看TOP20大索引的分析日期" key="select * from (select owner,index_name,table_name,num_rows,last_analyzed from dba_indexes where owner not in (&apos;SYS&apos;,&apos;SYSTEM&apos;,&apos;SYSMAN&apos;)AND NUM_ROWS IS NOT NULL order by num_rows desc )WHERE ROWNUM&lt;21"/>
+  <item value="TOP20大数据量表的分析日期" key="select * from (select owner,table_name,num_rows,last_analyzed from dba_tables where owner not in (&apos;SYS&apos;,&apos;SYSTEM&apos;,&apos;SYSMAN&apos;)AND NUM_ROWS IS NOT NULL order by num_rows desc )WHERE ROWNUM&lt;21"/>
+  <item value="查看需要REBUILD的索引" key="SELECT OWNER, INDEX_NAME, INDEX_TYPE, BLEVEL, TABLE_NAME FROM DBA_INDEXES WHERE BLEVEL &gt;=4"/>
+  <item value="数据大于5百万而没有分区" key="select owner,segment_name,segment_type from dba_segments where owner in (&apos;SDP&apos;,&apos;LOAN&apos;) and segment_name in (select table_name from all_tables where owner in (&apos;SDP&apos;,&apos;LOAN&apos;)  and  num_rows&gt;5000000 ) and partition_name is  null"/>
+
+</resource>

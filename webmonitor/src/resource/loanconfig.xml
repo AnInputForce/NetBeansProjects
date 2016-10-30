@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<java version="1.4.2" class="java.beans.XMLDecoder"> 
+ <object class="com.guloulou.bean.LoanServer"> 
+  <void property="demo"> 
+   <string>weblogic1初始化信息</string> 
+  </void> 
+  <void property="ipaddr"> 
+   <string>10.5.5.94</string> 
+  </void>
+  <void property="port"> 
+   <int>7001</int> 
+  </void> 
+  <void property="status"> 
+   <int>1</int> 
+  </void>
+  <void property="loanstate"> 
+   <string>com.guloulou.businesslogic.WeblogicState</string> 
+  </void>
+  <void property="testflag"> 
+   <string>CurrentNum = A</string> 
+  </void>
+  <void property="testpage"> 
+   <string>check.jsp</string> 
+  </void>
+ </object> 
+ <object class="com.guloulou.bean.LoanServer"> 
+  <void property="demo"> 
+   <string>oracle1初始化信息</string> 
+  </void> 
+  <void property="ipaddr"> 
+   <string>10.5.5.94</string> 
+  </void>
+  <void property="port"> 
+   <int>7001</int> 
+  </void> 
+  <void property="status"> 
+   <int>1</int> 
+  </void>
+  <void property="loanstate"> 
+   <string>com.guloulou.businesslogic.OracleState</string> 
+  </void>
+  <void property="testflag"> 
+   <string>CurrentNum = A</string> 
+  </void>
+  <void property="testpage"> 
+   <string>check.jsp</string> 
+  </void>
+ </object>
+ <object class="com.guloulou.bean.LoanServer"> 
+  <void property="demo"> 
+   <string>weblogic2初始化信息</string> 
+  </void> 
+  <void property="ipaddr"> 
+   <string>10.5.5.96</string> 
+  </void>
+  <void property="port"> 
+   <int>7001</int> 
+  </void> 
+  <void property="status"> 
+   <int>1</int> 
+  </void>
+  <void property="loanstate"> 
+   <string>com.guloulou.businesslogic.WeblogicState</string> 
+  </void>
+  <void property="testflag"> 
+   <string>CurrentNum = A</string> 
+  </void>
+  <void property="testpage"> 
+   <string>check.jsp</string> 
+  </void>
+ </object> 
+ <object class="com.guloulou.bean.LoanServer"> 
+  <void property="demo"> 
+   <string>oracle1初始化信息</string> 
+  </void> 
+  <void property="ipaddr"> 
+   <string>10.5.5.96</string> 
+  </void>
+  <void property="port"> 
+   <int>7001</int> 
+  </void> 
+  <void property="status"> 
+   <int>1</int> 
+  </void>
+  <void property="loanstate"> 
+   <string>com.guloulou.businesslogic.OracleState</string> 
+  </void>
+  <void property="testflag"> 
+   <string>CurrentNum = A</string> 
+  </void>
+  <void property="testpage"> 
+   <string>check.jsp</string> 
+  </void>
+ </object> 
+</java> 

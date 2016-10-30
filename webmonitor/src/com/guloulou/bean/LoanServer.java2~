@@ -1,0 +1,64 @@
+package com.guloulou.bean;
+
+
+// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+// #[regen=yes,id=DCE.43F3E090-2F80-DFA2-BAF0-F2E99BA2C0D9]
+// </editor-fold> 
+public class LoanServer {
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.891BC2F3-AC5F-0F22-86AE-038C1E46E686]
+    // </editor-fold> 
+    private serverip = "127.0.0.1";
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.93792DD3-5A1C-EF3A-2BF9-0B75C0C1726A]
+    // </editor-fold> 
+    private serverstate = "normalstate";
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.5368B972-319E-A92A-1515-78C4E889EABA]
+    // </editor-fold> 
+    public LoanServer () {
+    }
+
+    /**
+     *  @return the serverip
+     */
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.FF2C579C-5BD0-7DDC-EA5C-DC656E29AE08]
+    // </editor-fold> 
+    public getServerip () {
+        return null;
+    }
+
+    /**
+     *  @param serverip the serverip to set
+     */
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.5828D739-1352-78AC-2AA9-FB6DB5AA438A]
+    // </editor-fold> 
+    public void setServerip ( serverip) {
+    }
+
+    /**
+     *  @return the serverstate
+     */
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.B3C9DCD4-01F0-8E21-D326-A8D842ABEC0F]
+    // </editor-fold> 
+    public getServerstate () {
+        return null;
+    }
+
+    /**
+     *  @param serverstate the serverstate to set
+     */
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.33119B8E-F633-E932-FBF8-EC808881E975]
+    // </editor-fold> 
+    public void setServerstate ( serverstate) {
+    }
+
+}
+

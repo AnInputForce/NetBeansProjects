@@ -1,0 +1,14 @@
+#Fat Jar Configuration File
+#Tue Jun 16 22:59:34 CST 2009
+onejar.license.required=true
+manifest.classpath=
+manifest.removesigners=true
+onejar.checkbox=false
+jarname=loanserver.jar
+manifest.mergeall=true
+manifest.mainclass=com.guloulou.controllogic.LoanMonitoring
+manifest.file=<createnew>
+jarname.isextern=false
+onejar.expand=
+excludes=<po|loanserver>~lib/
+includes=

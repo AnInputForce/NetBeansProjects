@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resource>
+    <item key="man" value="男"/>
+    <item key="woman" value="女"/>
+    <item key="secret" value="保密"/>
+</resource>

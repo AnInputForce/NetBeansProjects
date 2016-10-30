@@ -1,0 +1,1 @@
+*/05 * * * * /home/weblogic103/webmonitor/loanserver.sh

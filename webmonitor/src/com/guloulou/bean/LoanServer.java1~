@@ -1,0 +1,56 @@
+package com.guloulou.bean;
+
+import com.guloulou.businesslogic.String; 
+
+// <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+// #[regen=yes,id=DCE.43F3E090-2F80-DFA2-BAF0-F2E99BA2C0D9]
+// </editor-fold> 
+public class LoanServer {
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.891BC2F3-AC5F-0F22-86AE-038C1E46E686]
+    // </editor-fold> 
+    private String serverip = "127.0.0.1";
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.93792DD3-5A1C-EF3A-2BF9-0B75C0C1726A]
+    // </editor-fold> 
+    private String serverstate = "normalstate";
+
+    // <editor-fold defaultstate="collapsed" desc=" UML Marker "> 
+    // #[regen=yes,id=DCE.5368B972-319E-A92A-1515-78C4E889EABA]
+    // </editor-fold> 
+    public LoanServer () {
+    }
+
+    /**
+     * @return the serverip
+     */
+    public String getServerip() {
+        return serverip;
+    }
+
+    /**
+     * @param serverip the serverip to set
+     */
+    public void setServerip(String serverip) {
+        this.serverip = serverip;
+    }
+
+    /**
+     * @return the serverstate
+     */
+    public String getServerstate() {
+        return serverstate;
+    }
+
+    /**
+     * @param serverstate the serverstate to set
+     */
+    public void setServerstate(String serverstate) {
+        this.serverstate = serverstate;
+    }
+
+    
+}
+

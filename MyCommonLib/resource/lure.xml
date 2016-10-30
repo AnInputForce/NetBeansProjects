@@ -1,0 +1,5 @@
+<demoSerializer type="Trolling">
+   <company>中石化</company>
+   <quantityInStock>23</quantityInStock>
+   <model>Marlin Buster</model>
+</demoSerializer>

@@ -1,0 +1,14 @@
+Manifest-Version: 1.0
+Created-By: Fat Jar Eclipse Plug-In
+Main-Class: com.guloulou.controllogic.LoanMonitoring
+
+Name: common
+Specification-Title: JDBC
+Specification-Version: 3.0
+Specification-Vendor: Sun Microsystems Inc.
+Implementation-Title: MySQL Connector/J
+Implementation-Version: 5.0.6
+Implementation-Vendor-Id: com.mysql
+Implementation-Vendor: MySQL AB
+
+
